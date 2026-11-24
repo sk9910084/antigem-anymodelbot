@@ -8,11 +8,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
@@ -216,7 +216,7 @@ object AnyModelBotManager {
             .build()
         val deadline = System.currentTimeMillis() + 150_000L
         var up = false
-        while (System.currentTimeMillis() < deadline && isActive) {
+        while (System.currentTimeMillis() < deadline && currentCoroutineContext().isActive) {
             val tok = readToken(appContext)
             val req = Request.Builder().url(HEALTH_URL)
                 .apply { if (tok != null) header("x-amb-token", tok) }
