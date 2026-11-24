@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.outlined.AppShortcut
 import androidx.compose.material.icons.outlined.Archive
+import androidx.compose.material.icons.outlined.SmartToy
 import androidx.compose.material.icons.outlined.Unarchive
 import androidx.compose.material.icons.outlined.PushPin
 import androidx.compose.material.icons.outlined.Apps
@@ -1322,6 +1323,21 @@ fun ChatHistoryDrawer(
                     Icon(
                         imageVector = Icons.Outlined.Apps,
                         contentDescription = "Mini Apps",
+                        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                        modifier = Modifier.padding(8.dp).size(20.dp)
+                    )
+                }
+
+                // AnyModelBot: the AI chat app (its Node server runs in this app's Linux environment)
+                Surface(
+                    onClick = { miniAppsContext.startActivity(android.content.Intent(miniAppsContext, ai.antigem.ui.anymodelbot.AnyModelBotActivity::class.java)) },
+                    shape = RoundedCornerShape(8.dp),
+                    color = Color.Transparent,
+                    modifier = Modifier.padding(end = 4.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.SmartToy,
+                        contentDescription = "AnyModelBot",
                         tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                         modifier = Modifier.padding(8.dp).size(20.dp)
                     )

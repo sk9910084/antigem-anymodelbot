@@ -457,6 +457,12 @@
             android:exported="true"
             android:theme="@style/Theme.AntiGem.MiniApp"
             android:configChanges="uiMode|orientation|screenSize|screenLayout|smallestScreenSize" />
+        <!-- AnyModelBot: the AI chat app (its Node server runs in this app's Linux environment, UI in a WebView) -->
+        <activity
+            android:name="ai.antigem.ui.anymodelbot.AnyModelBotActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AntiGem.MiniApp"
+            android:configChanges="uiMode|orientation|screenSize|screenLayout|smallestScreenSize" />
         <!-- "Get apps": the mini apps of AntiGem's GitHub catalog -->
         <activity
             android:name="ai.antigem.ui.miniapps.MiniAppStoreActivity"
